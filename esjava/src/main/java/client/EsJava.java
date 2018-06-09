@@ -18,7 +18,9 @@ public class EsJava {
 
     public static void main(String[] args) {
 
-        Settings settings = Settings.builder().put("cluster.name", "elasticsearch").build();
+        Settings settings = Settings.builder().put("cluster.name", "elasticsearch")
+                .put("client.transport.sniff",true)
+                .build();
         try {
             TransportClient client = new PreBuiltTransportClient(settings)
                     .addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("127.0.0.1"), 9300));
